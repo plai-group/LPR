@@ -1,0 +1,13 @@
+defaults:
+  - benchmark: null
+  - scheduler: null
+  - optimizer: null
+  - model: null
+  - strategy: null
+  - evaluation: nologger.yaml
+  - deploy: default.yaml
+  - experiment: split_cifar100.yaml
+  - hydra.yaml
+
+experiment:
+  stop_at_experience: 4

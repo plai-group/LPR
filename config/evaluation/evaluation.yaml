@@ -1,0 +1,17 @@
+peval_mode: experience
+eval_every: -1
+metrics: 
+  - accuracy_metrics
+  - cumulative_accuracy
+  - loss_metrics
+  - clock
+  - time
+loggers_strategy:
+  - interactive
+  - text
+  - json
+  - wandb
+rep_drift:
+  enable: false
+  every_iter: 1
+  n_samples: 100

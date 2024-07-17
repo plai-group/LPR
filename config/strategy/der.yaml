@@ -1,0 +1,6 @@
+defaults:
+  - method_defaults.yaml
+
+name: der
+alpha: 0.1
+beta: 0.5

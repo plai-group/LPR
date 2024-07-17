@@ -1,0 +1,28 @@
+mem_size: 2000
+batch_size_mem: null
+train_mb_size: 10
+eval_mb_size: 128
+train_epochs: 3
+device: cuda
+use_task_boundaries: false
+
+# If lpr is set to true, add LPR plugin.
+measure_drift_every_iter: -1
+grad_clip: null
+ema_momentum: null
+lpr: false
+lpr_kwargs:
+  preconditioner:          # Hyperparameter fors different layer types for computing preconditioner
+    omega_0: 1.            # > 0.       if this is set, override omega_0 for all layer types to this value
+    beta: 1.               # 0 to 1.    if this is set, override beta for all layer types to this value
+    linear_omega_0: null   # > 0.
+    conv_omega_0: null     # > 0.
+    bn_omega_0: null       # > 0.
+    conv_beta: null        # 0 to 1     : 0 for no modification, 1 for dividing sigma_obs by number of patches
+    bn_beta: null          # 0 to 1     : 0 for no modification, 1 for dividing sigma_obs by image dimension
+  update:
+    every_iter: null       # null or > 0: Update preconditioner once every this iteration
+    n_data: null           # null or > 0: How much replay data to use when computing preconditioner
+    batch_size: 100        # > 0        : Batch size when running network forward for updating preconditioner
+  log:
+    grad_norms: null       # null or > 0: Log gradient norms every this many experiences

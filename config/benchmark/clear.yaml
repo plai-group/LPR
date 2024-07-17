@@ -1,0 +1,12 @@
+defaults:
+  - nc_scenario.yaml
+
+dataset_name: "clear"
+
+factory_args:
+  benchmark_name: clear
+  use_transforms: true
+  n_experiences: 10
+  val_size: 0.05
+  fixed_class_order: null
+  clear_evaluation_protocol: streaming

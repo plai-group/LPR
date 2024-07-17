@@ -1,0 +1,6 @@
+.vscode
+data
+results
+wandb
+__pycache__
+env

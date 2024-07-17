@@ -1,0 +1,14 @@
+# @package _global_
+
+experiment:
+  results_root: ../results
+
+benchmark:
+  dataset_root: ../data
+
+wandb:
+  project_name: lpr
+  wandb_root: ../
+  wandb_mode: online
+  run_group: DEFAULT_GROUP
+  run_name: null

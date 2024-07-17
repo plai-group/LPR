@@ -1,0 +1,8 @@
+defaults:
+  - method_defaults.yaml
+  - er_ace.yaml
+
+name: repeated_ar
+
+raug_n: 1
+raug_m: 14

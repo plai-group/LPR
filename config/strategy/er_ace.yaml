@@ -1,0 +1,5 @@
+defaults:
+  - method_defaults.yaml
+
+name: er_ace
+alpha: 0.5
