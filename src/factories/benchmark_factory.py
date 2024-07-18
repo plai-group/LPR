@@ -49,7 +49,6 @@ def create_benchmark(
     class_ids_from_zero_in_each_exp: bool = False,
     class_ids_from_zero_from_first_exp: bool = False,
     use_transforms: bool = True,
-    clear_evaluation_protocol: str = "iid",  # Must be "iid" or "streaming"
 ):
     benchmark = None
     if benchmark_name == "split_cifar100":
@@ -182,13 +181,12 @@ def create_benchmark(
 
         # from avalanche.benchmarks.classic.clear import CLEAR  # NOTE: The classic CLEAR benchmark has bugs
         benchmark = CLEAR(
-            evaluation_protocol=clear_evaluation_protocol,
-            seed=seed if clear_evaluation_protocol == "iid" else None,
+            seed=seed,
             train_transform=train_transform,
             eval_transform=eval_transform,
             dataset_root=dataset_root,
         )
-        if val_size > 0 and clear_evaluation_protocol == "iid":
+        if val_size > 0:
             benchmark = benchmark_with_validation_stream(benchmark, validation_size=val_size, shuffle=True)
         return benchmark
 

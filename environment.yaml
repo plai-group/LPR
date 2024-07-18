@@ -7,7 +7,7 @@ dependencies:
   - conda-forge::gputil
   - conda-forge::quadprog
   - matplotlib
-  - numpy
+  - numpy[version='<2.0']
   - scikit-learn
   - psutil
   - wandb

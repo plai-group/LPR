@@ -561,7 +561,7 @@ if __name__ == "__main__":
 def CLEAR(
     *,
     data_name: str = "clear10",
-    evaluation_protocol: str = "streaming",
+    evaluation_protocol: str = "iid",
     feature_type: Optional[str] = None,
     seed: Optional[int] = None,
     train_transform: Optional[Any] = None,
@@ -644,6 +644,9 @@ def CLEAR(
         test_split = "test"
     else:
         raise NotImplementedError()
+
+    if dataset_root is not None:
+        dataset_root = os.path.join(dataset_root, "clear")
 
     if feature_type is None:
         clear_dataset_train = _CLEARImage(

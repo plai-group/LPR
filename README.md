@@ -4,25 +4,6 @@ Code for the paper **Layerwise Proximal Replay: A Proximal Point Method for Onli
 
 This repository is based on the [OCL Survey](https://github.com/AlbinSou/ocl_survey) repository.
 
-## Getting Started with LPR
-
-Sample Run Commands
-
-**Split-CIFAR100**
-```
-cd experiments
-
-python main.py strategy=er experiment=split_cifar100 optimizer.lr=0.1 strategy.lpr=true strategy.lpr_kwargs.preconditioner.omega_0=4 strategy.lpr_kwargs.preconditioner.beta=2 strategy.lpr_kwargs.update.every_iter=30
-```
-
-**Split-TinyImageNet**
-```
-cd experiments
-
-python main.py strategy=er experiment=split_tinyimagenet optimizer.lr=0.01 strategy.lpr=true strategy.lpr_kwargs.preconditioner.omega_0=0.25 strategy.lpr_kwargs.preconditioner.beta=2 strategy.lpr_kwargs.update.every_iter=90
-```
-
-LPR can be enabled by setting the flag `strategy.lpr=true` in the run command. Most of LPR's implementation is located at `src/strategies/lpr_plugin.py`.
 
 ## Installation
 
@@ -48,10 +29,42 @@ pip install -r requirements.txt
 Set your PYTHONPATH as the root of the project
 
 ```
-conda env config vars set PYTHONPATH=/home/.../lpr
+conda env config vars set PYTHONPATH=$(pwd -P)
 ```
 
-In order to let the scripts know where to fetch and log data, you should also create a **deploy config**, indicating where the results should be stored and the datasets fetched. Either add a new one or **change the content of config/deploy/default.yaml**
+In order to let the scripts know where to fetch and log data, you should also create a **deploy config**, indicating where the results should be stored and the datasets fetched. Either add a new one or **change the content of config/deploy/default.yaml**.
+
+
+## Getting Started with LPR
+
+LPR can be enabled by setting the flag `strategy.lpr=true` in the run command. Most of LPR's implementation is located at `src/strategies/lpr_plugin.py`.
+
+Sample Run Commands
+
+**Split-CIFAR100**
+```
+cd experiments
+
+python main.py strategy=er experiment=split_cifar100 optimizer.lr=0.1 strategy.lpr=true strategy.lpr_kwargs.preconditioner.omega_0=4 strategy.lpr_kwargs.preconditioner.beta=2 strategy.lpr_kwargs.update.every_iter=30
+```
+
+**Split-TinyImageNet**
+```
+cd experiments
+
+python main.py strategy=er experiment=split_tinyimagenet optimizer.lr=0.01 strategy.lpr=true strategy.lpr_kwargs.preconditioner.omega_0=0.25 strategy.lpr_kwargs.preconditioner.beta=2 strategy.lpr_kwargs.update.every_iter=90
+```
+
+**Online CLEAR**
+
+Download the dataset from this [link](https://drive.google.com/file/d/1wglC53ff2qGOuz6BnW6n9v2G01l5L4on/view?usp=sharing) and unzip it at `./data`.
+
+Then, run
+```
+cd experiments
+
+python main.py strategy=er experiment=clear optimizer.lr=0.01 strategy.lpr=true strategy.lpr_kwargs.preconditioner.omega_0=1. strategy.lpr_kwargs.preconditioner.beta=1. strategy.lpr_kwargs.update.every_iter=100
+```
 
 
 ## Structure
